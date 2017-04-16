@@ -139,6 +139,8 @@ class ViewController: UIViewController {
         
         questionsAsked = 0
         correctQuestions = 0
+        //Previous answers need to be reset to continue
+        previousQuestionsAsked.removeAll()
         nextRound()
     }
     
