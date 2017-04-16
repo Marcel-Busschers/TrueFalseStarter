@@ -75,6 +75,7 @@ class ViewController: UIViewController {
         playAgainButton.isHidden = true
         
         timer.isHidden = false
+        enableButtons()
         timerReset()
         beginTimer()
     }
@@ -105,10 +106,13 @@ class ViewController: UIViewController {
             questionField.text = "Correct!"
             lightningTimer.invalidate()
             playCorrectAnswerSound()
+            disableButtons()
         } else {
+            // Appropriately showing the correct answer in hte questionField
             questionField.text = "Sorry, wrong answer! Correct answer was: \(correctAnswer)"
             lightningTimer.invalidate()
             playWrongAnswerSound()
+            disableButtons()
         }
         
         loadNextRoundWithDelay(seconds: 2)
@@ -161,6 +165,7 @@ class ViewController: UIViewController {
             questionField.text = "Oh no! You ran out of time! The correct answer was: \(correctAnswer)"
             
             playTimerEndSound()
+            disableButtons()
             loadNextRoundWithDelay(seconds: 2)
         }
     }
@@ -243,10 +248,29 @@ class ViewController: UIViewController {
         loadCorrectAnswerSound()
         loadWrongAnswerSound()
     }
+    
+    // To Disable and Enable the buttons, as when you spam them, multiple errors occur that we dont want:
+    func enableButtons() {
+        firstOption.isEnabled = true
+        secondOption.isEnabled = true
+        thirdOption.isEnabled = true
+        fourthOption.isEnabled = true
+    }
+    func disableButtons() {
+        firstOption.isEnabled = false
+        secondOption.isEnabled = false
+        thirdOption.isEnabled = false
+        fourthOption.isEnabled = false
+    }
 }
 
 // Refference: 
 /* 
  http://stackoverflow.com/questions/24007518/how-can-i-use-nstimer-in-swift
-*/
+
+ Optional Features:
+ -Lightning Timer Implemented
+ -Tells you the correct answer when get it wrong
+ -Added sound effects for: Correct, Incorrect, Timer Ending and Game ending
+ */
 
