@@ -276,3 +276,5 @@ class ViewController: UIViewController {
  -Added sound effects for: Correct, Incorrect, Timer Ending and Game ending
  */
 
+// Auto Layout set for all devices 
+
